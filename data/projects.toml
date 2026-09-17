@@ -61,3 +61,11 @@ description_en = "Reviving hardcore characters in Titan Quest 2"
 image = "/images/tq2.svg"
 href = "https://github.com/hexqnt/tq2-hc-revival"
 external = true
+
+[[project]]
+title = "Protonhax"
+description_ru = "Запуск программ в контексте игры под Steam Proton"
+description_en = "Run programs in a Steam Proton game's environment"
+image = "/images/protonhax.svg"
+href = "https://github.com/hexqnt/protonhax"
+external = true
