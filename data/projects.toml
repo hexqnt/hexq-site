@@ -1,0 +1,63 @@
+[[project]]
+title = "RUA"
+description_ru = "Динамика изменения контролируемой территории в российско-украинском конфликте"
+description_en = "Changes in territorial control during the Russo-Ukrainian war"
+image = "/images/rua.svg"
+href = "https://rua.hexq.ru"
+external = true
+
+[[project]]
+title = "LangRank"
+description_ru = "Агрегированный рейтинг языков программирования"
+description_en = "An aggregated ranking of programming languages"
+image = "/images/langrank.svg"
+href = "https://langrank.hexq.ru"
+external = true
+
+[[project]]
+title = "Curve Fit"
+description_ru = "Учебное приложение для подбора кривых и выбора алгоритма оптимизации"
+description_en = "A practice app for curve fitting and choosing optimization algorithms"
+image = "/images/curve-fit.svg"
+href = "http://curve-fit.hexq.ru"
+external = true
+
+[[project]]
+title_ru = "Заметки"
+title_en = "Notes"
+description_ru = "Заметки о программировании и математике"
+description_en = "Notes on programming and mathematics (in Russian)"
+image = "/images/notes.svg"
+href = "/notes/"
+external = false
+
+[[project]]
+title = "Curcat"
+description_ru = "Оцифровка графиков по растровым изображениям"
+description_en = "Digitize plots from raster images"
+image = "/images/curcat.svg"
+href = "https://github.com/hexqnt/curcat"
+external = true
+
+# [[project]]
+# title = "GAMLSS"
+# description = "Типизированные Rust-крейт для построения моделей вероятностной регрессии"
+# image = "/images/gamlss.svg"
+# href = "https://github.com/hexqnt/gamlss"
+# external = true
+
+[[project]]
+title = "pgcopy"
+description_ru = "Экспорт и импорт объектов PostgreSQL одним файлом (бандлом)"
+description_en = "Export and import PostgreSQL objects as a single bundle"
+image = "/images/pgcopy.svg"
+href = "https://github.com/hexqnt/pgcopy"
+external = true
+
+[[project]]
+title = "TQ2 HC Revival"
+description_ru = "Возрождение персонажей в режиме HC в Titan Quest 2"
+description_en = "Reviving hardcore characters in Titan Quest 2"
+image = "/images/tq2.svg"
+href = "https://github.com/hexqnt/tq2-hc-revival"
+external = true

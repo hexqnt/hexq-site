@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Записки · {{ config.title }}{% endblock title %}
+{% block description %}{{ section.description }}{% endblock description %}
+{% block og_title %}Записки · {{ config.title }}{% endblock og_title %}
+{% block og_description %}{{ section.description }}{% endblock og_description %}
+
+{% block content %}
+  <article class="notes-index">
+    <header class="page-heading">
+      <p class="eyebrow"><a href="{{ get_url(path='/') }}">← Проекты</a></p>
+      <h1>{{ section.title }}</h1>
+      {% if section.description %}<p>{{ section.description }}</p>{% endif %}
+    </header>
+
+    <ol class="note-list">
+      {% for page in section.pages %}
+        <li>
+          <a href="{{ page.permalink }}">
+            <time datetime="{{ page.date }}">{{ page.date | date(format="%d.%m.%Y") }}</time>
+            <span>
+              <strong>{{ page.title }}</strong>
+              {% if page.description %}<small>{{ page.description }}</small>{% endif %}
+            </span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ol>
+  </article>
+{% endblock content %}

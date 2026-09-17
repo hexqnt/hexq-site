@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+  <rect width="640" height="640" fill="#ddd4bc"/>
+  <rect x="90" y="126" width="460" height="388" rx="8" fill="#292a25"/>
+  <circle cx="124" cy="158" r="9" fill="#df6450"/><circle cx="154" cy="158" r="9" fill="#dab650"/><circle cx="184" cy="158" r="9" fill="#76a968"/>
+  <path d="m150 248 72 62-72 62M258 384h132" fill="none" stroke="#c8ff48" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="404" y="335" fill="#e8e6dd" font-family="monospace" font-size="72" font-weight="700">TQ2</text>
+</svg>

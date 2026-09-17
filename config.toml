@@ -1,0 +1,27 @@
+base_url = "https://hexq.ru"
+title = "hexq"
+description = "Проекты и записки"
+default_language = "ru"
+compile_sass = false
+minify_html = true
+build_search_index = false
+
+[markdown]
+smart_punctuation = true
+
+[markdown.highlighting]
+theme = "catppuccin-mocha"
+
+[link_checker]
+# Эти архивные материалы доступны в браузере, но их серверы отдают
+# неполную цепочку TLS-сертификатов, которую строгий проверяющий Zola отклоняет.
+skip_prefixes = ["https://nla.skoltech.ru/", "https://www.math.wm.edu/~leemis/"]
+
+[languages.en]
+title = "hexq"
+description = "Projects and notes"
+
+[extra]
+github_url = "https://github.com/hexqnt"
+# Замените на адрес своего профиля перед публикацией.
+linkedin_url = "https://www.linkedin.com/in/kvs89"

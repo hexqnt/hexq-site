@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }}{% endblock title %}
+{% block description %}{{ section.description }}{% endblock description %}
+{% block og_title %}{{ section.title }}{% endblock og_title %}
+{% block og_description %}{{ section.description }}{% endblock og_description %}
+
+{% block extra_head %}
+  <link rel="alternate" hreflang="ru" href="{{ get_url(path='/', lang='ru', trailing_slash=true) }}">
+  <link rel="alternate" hreflang="en" href="{{ get_url(path='/', lang='en', trailing_slash=true) }}">
+  {% if lang == 'ru' %}
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "hexq",
+      "url": "{{ get_url(path='/', lang='ru', trailing_slash=true) }}"
+    }</script>
+  {% endif %}
+{% endblock extra_head %}
+
+{% block header_actions %}
+  <nav class="language-switch" aria-label="{% if lang == 'en' %}Language{% else %}Язык{% endif %}">
+    <a href="{{ get_url(path='/', lang='ru', trailing_slash=true) }}" lang="ru" hreflang="ru"{% if lang == 'ru' %} aria-current="page"{% endif %}>RU</a>
+    <a href="{{ get_url(path='/', lang='en', trailing_slash=true) }}" lang="en" hreflang="en"{% if lang == 'en' %} aria-current="page"{% endif %}>EN</a>
+  </nav>
+{% endblock header_actions %}
+
+{% block content %}
+  {% set data = load_data(path="data/projects.toml") %}
+  <h1 class="visually-hidden">{{ section.title }}</h1>
+  <section class="project-grid" aria-label="{% if lang == 'en' %}Projects and notes{% else %}Проекты и материалы{% endif %}">
+    {% for project in data.project %}
+      {% set title = project.title | default(value="") %}
+      {% if lang == "en" %}
+        {% set title = project.title_en | default(value=title) %}
+        {% set description = project.description_en %}
+      {% else %}
+        {% set title = project.title_ru | default(value=title) %}
+        {% set description = project.description_ru %}
+      {% endif %}
+      <a class="project-card" href="{{ project.href }}"{% if project.external %} aria-label="{{ title }} — {% if lang == 'en' %}external site{% else %}внешний ресурс{% endif %}"{% endif %}>
+        <img src="{{ project.image }}" alt="" width="640" height="640" decoding="async"{% if loop.index == 1 %} fetchpriority="high"{% elif loop.index > 4 %} loading="lazy"{% endif %}>
+        <span class="project-card__caption">
+          <strong>{{ title }}{% if project.external %}<span class="external-mark" aria-hidden="true">↗</span>{% endif %}</strong>
+          <span>{{ description }}</span>
+        </span>
+      </a>
+    {% endfor %}
+  </section>
+{% endblock content %}

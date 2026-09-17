@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title">
+  <title id="title">Флаги России и Украины над графиком изменения территории</title>
+  <rect width="640" height="640" fill="#d5ddcc"/>
+  <g stroke="#20311d" stroke-width="6">
+    <g>
+      <rect x="58" y="76" width="180" height="108" fill="#fff" stroke="none"/>
+      <rect x="58" y="112" width="180" height="36" fill="#0039a6" stroke="none"/>
+      <rect x="58" y="148" width="180" height="36" fill="#d52b1e" stroke="none"/>
+      <rect x="58" y="76" width="180" height="108" fill="none"/>
+    </g>
+    <g>
+      <rect x="402" y="76" width="180" height="54" fill="#0057b7" stroke="none"/>
+      <rect x="402" y="130" width="180" height="54" fill="#ffd700" stroke="none"/>
+      <rect x="402" y="76" width="180" height="108" fill="none"/>
+    </g>
+  </g>
+  <text x="320" y="149" fill="#20311d" font-family="ui-monospace, monospace" font-size="54" font-weight="700" text-anchor="middle">VS</text>
+  <path d="M0 482c72-74 124-24 183-80 58-56 108-190 167-152 69 44 88 214 146 182 47-26 73-132 144-168v376H0Z" fill="#6f8d61"/>
+  <path d="M0 458c72-74 124-24 183-80 58-56 108-190 167-152 69 44 88 214 146 182 47-26 73-132 144-168" fill="none" stroke="#20311d" stroke-width="8"/>
+  <g fill="#20311d"><circle cx="183" cy="378" r="10"/><circle cx="350" cy="226" r="10"/><circle cx="496" cy="408" r="10"/></g>
+</svg>

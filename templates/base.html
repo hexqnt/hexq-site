@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="{{ lang }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#f1f0eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#101110" media="(prefers-color-scheme: dark)">
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+        let savedTheme;
+
+        try {
+          savedTheme = localStorage.getItem("theme");
+        } catch (_) {
+          savedTheme = null;
+        }
+
+        if (savedTheme !== "light" && savedTheme !== "dark") savedTheme = null;
+
+        function applyTheme() {
+          const theme = savedTheme || (systemTheme.matches ? "dark" : "light");
+          root.dataset.theme = theme;
+
+          if (savedTheme) {
+            const color = theme === "dark" ? "#101110" : "#f1f0eb";
+            document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
+              meta.content = color;
+            });
+          }
+
+          const button = document.querySelector(".theme-toggle");
+          if (button) {
+            const label = root.lang === "en"
+              ? (theme === "dark" ? "Switch to light theme" : "Switch to dark theme")
+              : (theme === "dark" ? "Включить светлую тему" : "Включить тёмную тему");
+            button.setAttribute("aria-label", label);
+            button.title = label;
+          }
+        }
+
+        applyTheme();
+        systemTheme.addEventListener("change", () => {
+          if (!savedTheme) applyTheme();
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+          const button = document.querySelector(".theme-toggle");
+          applyTheme();
+          button.hidden = false;
+          button.addEventListener("click", () => {
+            savedTheme = root.dataset.theme === "dark" ? "light" : "dark";
+            try {
+              localStorage.setItem("theme", savedTheme);
+            } catch (_) {
+              // The theme still works for this page when storage is unavailable.
+            }
+            applyTheme();
+          });
+        });
+      })();
+    </script>
+    <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    <link rel="canonical" href="{{ current_url }}">
+    <meta property="og:type" content="{% block og_type %}website{% endblock og_type %}">
+    <meta property="og:site_name" content="{{ config.title }}">
+    <meta property="og:locale" content="{% if lang == 'en' %}en_US{% else %}ru_RU{% endif %}">
+    <meta property="og:url" content="{{ current_url }}">
+    <meta property="og:title" content="{% block og_title %}{{ config.title }}{% endblock og_title %}">
+    <meta property="og:description" content="{% block og_description %}{{ config.description }}{% endblock og_description %}">
+    <link rel="icon" href="{{ get_url(path='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ get_url(path='styles/main.css') }}">
+    {% block extra_head %}{% endblock extra_head %}
+  </head>
+  <body>
+    <a class="skip-link" href="#content">{% if lang == "en" %}Skip to content{% else %}К содержанию{% endif %}</a>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="wordmark" href="{{ get_url(path='/', lang=lang, trailing_slash=true) }}" aria-label="{% if lang == 'en' %}hexq — home{% else %}hexq — главная{% endif %}">hexq<span>.</span></a>
+        <div class="header-actions">
+          {% block header_actions %}{% endblock header_actions %}
+          <button class="theme-toggle" type="button" aria-label="{% if lang == 'en' %}Switch theme{% else %}Переключить тему{% endif %}" hidden>
+            <svg class="theme-toggle__moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.2 16.2A8.5 8.5 0 0 1 7.8 3.8 8.5 8.5 0 1 0 20.2 16.2Z"/></svg>
+            <svg class="theme-toggle__sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <main id="content">
+        {% block content %}{% endblock content %}
+      </main>
+
+      <footer class="site-footer">
+        <small>© {{ now() | date(format="%Y") }} hexqnt</small>
+        <nav class="social-links" aria-label="{% if lang == 'en' %}Social links{% else %}Социальные сети{% endif %}">
+          <a href="{{ config.extra.github_url }}" aria-label="GitHub" title="GitHub">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.82a9.4 9.4 0 0 1 2.5.34c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86V21c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+          </a>
+          <a href="{{ config.extra.linkedin_url }}" aria-label="LinkedIn" title="LinkedIn">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6.5 8.25H3.25V21H6.5V8.25ZM4.88 3A1.88 1.88 0 1 0 4.9 6.76 1.88 1.88 0 0 0 4.88 3ZM21 13.69c0-3.84-2.05-5.63-4.79-5.63a4.14 4.14 0 0 0-3.75 2.06V8.25H9.21V21h3.25v-6.31c0-1.66.31-3.27 2.38-3.27 2.04 0 2.06 1.91 2.06 3.38V21H21v-7.31Z"/></svg>
+          </a>
+        </nav>
+      </footer>
+    </div>
+  </body>
+</html>
