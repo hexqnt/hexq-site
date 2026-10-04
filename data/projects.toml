@@ -23,6 +23,15 @@ href = "http://curve-fit.hexq.ru"
 external = true
 
 [[project]]
+title_ru = "Календарь-планировщик"
+title_en = "Calendar planner"
+description_ru = "Календарь для планирования дел и событий"
+description_en = "A calendar for planning tasks and events"
+image = "/images/planer.svg"
+href = "https://planer.hexq.ru"
+external = true
+
+[[project]]
 title_ru = "Заметки"
 title_en = "Notes"
 description_ru = "Заметки о программировании и математике"
